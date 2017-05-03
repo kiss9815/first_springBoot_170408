@@ -1,10 +1,15 @@
 package com.example.article;
 
+import lombok.*;
+
 import java.time.OffsetDateTime;
 
 /**
  * Created by EOM on 2017-04-08.
  */
+
+//Date 쓸 경우 생성자 있어야 함,
+@Data
 public class Article{
 
     private Long id;
@@ -25,44 +30,44 @@ public class Article{
         this.body = body;
         this.created = OffsetDateTime.now();
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
-
-    public void setCreated(OffsetDateTime created) {
-        this.created = created;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public OffsetDateTime getCreated() {
-        return created;
-    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
+//
+//    public void setTitle(String title) {
+//        this.title = title;
+//    }
+//
+//    public void setAuthor(String author) {
+//        this.author = author;
+//    }
+//
+//    public void setBody(String body) {
+//        this.body = body;
+//    }
+//
+//    public void setCreated(OffsetDateTime created) {
+//        this.created = created;
+//    }
+//
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public String getTitle() {
+//        return title;
+//    }
+//
+//    public String getAuthor() {
+//        return author;
+//    }
+//
+//    public String getBody() {
+//        return body;
+//    }
+//
+//    public OffsetDateTime getCreated() {
+//        return created;
+//    }
 }

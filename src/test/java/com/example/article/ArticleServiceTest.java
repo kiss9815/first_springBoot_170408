@@ -4,8 +4,10 @@ import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 
@@ -23,6 +25,9 @@ public class ArticleServiceTest {
     @Autowired
     ArticleService articleService;
 
+    @MockBean
+    ArticleRepository repository;
+
 
     @Test
     public void 게시물_만들기_테스트() {
@@ -30,6 +35,7 @@ public class ArticleServiceTest {
         // given : 테스트할떄 필요한 정보들
         // articleService = new ArticleService();
         ArticleCreateRequest request = new ArticleCreateRequest(1L, "제목", "작가","본문");
+        //Mockito.when(repository.add(Mockito.any())).thenReturn(new Article(1L, "제목", "", "본문2"))
 
         // when : 테스트 코드 실행
         Article article = articleService.createArticle(request);
@@ -60,6 +66,19 @@ public class ArticleServiceTest {
         assertThat(article.getTitle(), is("제목"));
         assertThat(article.getBody(), is("본문"));
         assertThat(article.getCreated(), is(notNullValue()));
+
+    }
+
+    @Test
+    public void 게시물_만들기_테스트_assert() {
+        ArticleCreateRequest request = new ArticleCreateRequest(1L, "제목", "작가","본문");
+
+        Article article = articleService.createArticle(request);
+
+        ArticleAssert.assertThat(article).hasAuthor("작가")
+                                        .hasTitle("제목")
+                                        .hasBody("본문");
+
 
     }
 
